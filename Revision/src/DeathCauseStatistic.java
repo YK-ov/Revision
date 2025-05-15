@@ -22,19 +22,15 @@ public class DeathCauseStatistic {
         String icdCode = parts[0].trim();
 
 
-        int withoutZeroes = 0;
-        for (int i = 1; i < parts.length; i++) {
-            if (!parts[i].equals("-") && !parts[i].isEmpty()) {
-                withoutZeroes++;
+        int[] deaths = new int[20];
+        int j = 0;
+
+        for (int i = 2; i < parts.length; i++) {
+            if (!parts[i].equals("-")) {
+                deaths[j++] = Integer.parseInt(parts[i].trim());
             }
-        }
-
-        int[] deaths = new int[withoutZeroes];
-        int index = 0;
-
-        for (int i = 1; i < parts.length; i++) {
-            if (!parts[i].equals("-") && !parts[i].isEmpty()) {
-                deaths[index++] = Integer.parseInt(parts[i].trim());
+            else{
+                deaths[j++] = 0;
             }
         }
 
@@ -51,24 +47,20 @@ public class DeathCauseStatistic {
     }
 
     public AgeBracketDeaths ageBracket(int age) {
-        if (age >= 0 && age <= 18) {
-            return new AgeBracketDeaths(0, 18, deaths[0]);
-        } else if (age > 18 && age <= 65) {
-            return new AgeBracketDeaths(19, 65, deaths[1]);
-        } else if (age > 65) {
-            return new AgeBracketDeaths(66, 150, deaths[2]);
-        } else {
-            throw new IllegalArgumentException("Wiek nie moze byc ujemny");
+        int index = age/5;
+        if (index >= 20){
+            index = 19;
         }
+        return new AgeBracketDeaths(index*5, index*5+4, this.deaths[index]);
     }
 
     public class AgeBracketDeaths{
-        public final int youong;
+        public final int young;
         public final int old;
         public final int deathCount;
 
-        public AgeBracketDeaths(int youong, int old, int deathCount) {
-            this.youong = youong;
+        public AgeBracketDeaths(int young, int old, int deathCount) {
+            this.young = young;
             this.old = old;
             this.deathCount = deathCount;
         }

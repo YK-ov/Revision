@@ -14,6 +14,7 @@ public class ICDCodeTabularOptimizedForMemory implements ICDCodeTabular {
             int lineCount = 0;
 
             while ((line = reader.readLine()) != null) {
+                line = line.trim();
                 lineCount++;
                 if (lineCount >= 88) {
                     String[] parts = line.split(" ", 2);
