@@ -22,8 +22,8 @@ public class ICDCodeTabularOptimizedForMemory implements ICDCodeTabular {
                     }
                 }
             }
-        } catch (IOException e) {
-            throw new RuntimeException("Plik nie istnieje: " + e.getMessage());
+        } catch (IOException exception) {
+            throw new RuntimeException("Plik nie istnieje: " + exception.getMessage());
         }
         throw new IndexOutOfBoundsException("Nie znaleziono kodu ICD: " + icdCode);
     }

@@ -3,7 +3,6 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         {
-            System.out.println("Hello World");
 
             DeathCauseStatistic stats = new DeathCauseStatistic("A.25", new int[]{48, 49});
             System.out.println(stats);
@@ -17,7 +16,9 @@ public class Main {
             System.out.println(timeOptimized.getDescription("A00"));
 
             ICDCodeTabular memoryOptimized = new ICDCodeTabularOptimizedForMemory(filePath);
-            System.out.println(memoryOptimized.getDescription("A00"));
+            System.out.println(memoryOptimized.getDescription("B01"));
+
+
         }
 
     }

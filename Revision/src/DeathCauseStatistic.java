@@ -56,7 +56,7 @@ public class DeathCauseStatistic {
         } else if (age > 18 && age <= 65) {
             return new AgeBracketDeaths(19, 65, deaths[1]);
         } else if (age > 65) {
-            return new AgeBracketDeaths(66, 120, deaths[2]);
+            return new AgeBracketDeaths(66, 150, deaths[2]);
         } else {
             throw new IllegalArgumentException("Wiek nie moze byc ujemny");
         }
